@@ -1,4 +1,5 @@
 import useGetProjects from "../../hooks/project/useGetProjects"
+import ProjectCard from "./ProjectCard"
 
 const ProjectList = () => {
 
@@ -13,13 +14,12 @@ const ProjectList = () => {
     if (isSuccess) 
 
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-4 w-full">
         {projects?.map((project) => (
-            <div key={project.id}>
-                <h2>{project.name}</h2>
-                <p>{project.description}</p>
-                <p>Created at: {new Date(project.created_at).toLocaleDateString()}</p>
-            </div>
+            <ProjectCard 
+                key={project.id}
+                project={project}
+            />
         ))}
     </div>
   )
