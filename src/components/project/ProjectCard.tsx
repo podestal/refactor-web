@@ -11,7 +11,7 @@ export default function ProjectCard({project}: Props) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02, opacity: 0.8 }}
-      className="parent rounded-2xl mx-auto w-[80%] cursor-pointer relative translate-0.7"
+      className="parent rounded-2xl mx-auto w-[80%] cursor-pointer relative translate-0.7 mb-18"
     >
         <div className='gradient-shadow absolute'></div>
         <div className='content flex flex-col gap-2'>

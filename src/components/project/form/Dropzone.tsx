@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { UploadCloud, X } from 'lucide-react';
+import type { Project } from '../../../services/api/projectService';
+import type { CreateProjectData } from '../../../hooks/project/useCreateProject';
+import type { UseMutationResult } from '@tanstack/react-query';
 
 interface Props {
-  onFileDrop: (files: FileList) => void;
+//   onFileDrop: (files: FileList) => void;
+    // setFile: (file: File | null) => void
+    // file: File | null
+    createProject:  UseMutationResult<Project, Error, CreateProjectData>
 };
 
-const Dropzone = ({ onFileDrop }: Props) => {
+const Dropzone = ({ createProject }: Props) => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
 
@@ -24,14 +30,21 @@ const Dropzone = ({ onFileDrop }: Props) => {
     setIsDragging(false);
     if (e.dataTransfer.files.length > 0) {
       setFileName(e.dataTransfer.files[0].name);
-      onFileDrop(e.dataTransfer.files);
+      console.log('file', e.dataTransfer.files[0]);
+        const formData = new FormData();
+        formData.append('upload_type', 'zip');
+        formData.append('uploaded_file', e.dataTransfer.files[0]);
+        formData.append('name', e.dataTransfer.files[0].name);
+        formData.append('description', 'description');
+        createProject.mutate({
+            project: formData
+        })
     }
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFileName(e.target.files[0].name);
-      onFileDrop(e.target.files);
     }
   };
 

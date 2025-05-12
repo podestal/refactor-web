@@ -5,7 +5,7 @@ export interface Project {
     name: string
     description: string
     upload_type: string
-    uploaded_file: string | null
+    uploaded_file: File | null
     repo_url: string | null
     created_at: string
     analyzed: boolean
@@ -24,7 +24,7 @@ const getProjectService = ({ projectId }: Props) => {
     if (projectId) {
         url = `${url}/${projectId}/`
     }   
-    return new APIClient<Project, CreateUpdateProject>(url)
+    return new APIClient<Project, FormData>(url)
 }
 
 export default getProjectService
