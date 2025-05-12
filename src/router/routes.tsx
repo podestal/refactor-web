@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import PublicRoutes from '../components/auth/PublicRoutes';
-import MainPage from '../components/pages/MainPage';
+import MainPage from '../pages/MainPage';
 
 const routes = createBrowserRouter([
     {
