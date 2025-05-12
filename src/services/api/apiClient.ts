@@ -25,7 +25,7 @@ class APIClient<ResponseType, RequestType = ResponseType> {
         }
     
         return axiosInstance
-            .get<ResponseType>(this.endpoint, config)
+            .get<ResponseType[]>(this.endpoint, config)
             .then(res => res.data);
     }
 

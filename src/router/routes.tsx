@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import PublicRoutes from '../components/auth/PublicRoutes';
-import MainPage from '../pages/MainPage';
+// import MainPage from '../pages/MainPage';
+import ProjectPage from '../pages/ProjectPage';
 
 const routes = createBrowserRouter([
     {
@@ -9,7 +10,7 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <MainPage />
+                element: <ProjectPage />
             }
         ]
     }

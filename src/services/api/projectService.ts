@@ -18,9 +18,11 @@ interface Props {
 }
 
 const getProjectService = ({ projectId }: Props) => {
-    let url = '/projects'
+    console.log('projectId', projectId);
+    
+    let url = '/projects/'
     if (projectId) {
-        url = `${url}/${projectId}`
+        url = `${url}/${projectId}/`
     }   
     return new APIClient<Project, CreateUpdateProject>(url)
 }
